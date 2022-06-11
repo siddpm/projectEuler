@@ -78,6 +78,11 @@ encode lst = map (\x -> (length x, head x)) $ pack lst
 
 
 
-
+-- A function that given a value returns if the value is a prime 
+--prime :: Floating a => a -> Bool
+prime :: Int -> Bool
+prime 1 = False
+prime 2 = True
+prime p = null [x | x <- 2:[3,5..p-1] , mod p x == 0]
 
 
