@@ -3,8 +3,9 @@ import Control.Monad (guard)
 -- Warmup problems 
 
 -- Problem 1, unnecessarily using do-noation while a list comprehension would "do" 
--- https://projecteuler.net/problem=1
 -- Sub-optimal solution, runs in O(n)
+-- https://projecteuler.net/problem=1
+
 
 problem001 :: Int  -> Int 
 problem001 a = let lstgen = do 
@@ -28,11 +29,29 @@ sumseries n = n * (n + 1) `div` 2
 
 problem001' :: Int -> Int 
 problem001' n = 
-    let mult3s =  3 *  (sumseries $ n `div` 3)
-        mult5s =  5 *  (sumseries $ n `div` 5)
-        mult15s = 15 *  (sumseries $ n `div` 15) 
+    let mult3s =  3 *  sumseries  (n `div` 3)
+        mult5s =  5 *  sumseries  (n `div` 5)
+        mult15s = 15 * sumseries (n `div` 15)
     in mult3s + mult5s - mult15s
 
+-- Problem 2 : Even Fibonacci numbers 
+
+-- Suboptimal solution, keeps recomputing the same values over
+fib :: Int -> Int 
+fib 1 = 1 
+fib 2 = 2
+fib n = fib (n - 1) + fib (n - 2)
+
+-- Optimal solution that works with infinite lists 
+-- Its a bit unintuitive but generally the idea is as follows
+-- You're trying to generate a new fib number while on the go,
+-- using what has already been computed to produce the next numbers  
+ 
+fibs :: [Int]
+fibs = 1:1: zipWith (+) fibs (tail fibs)
+
+problem002 :: Int
+problem002 =  sum $ filter even $ takeWhile (<4000000) fibs
 
 
 -- Problem 432
