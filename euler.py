@@ -1,8 +1,6 @@
 """Project Euler problems"""
 from typing import List, Generator
-import math 
 from helpers import *
-
 
 
 def problem001(limit: int) -> int:
@@ -31,30 +29,32 @@ def problem002(limit: int) -> int:
 
     return sum_vals
 
+
 def problem003(num: int, gen: Generator[int, None, None]) -> List[int]:
-    '''Solution to problem 3'''
+    """Solution to problem 3"""
     factors = []
-    
+
     # initialise candidate with first prime
     candidate = gen.__next__()
 
     while candidate <= num:
         if num % candidate == 0:
             factors.append(candidate)
-            num = num/candidate
+            num = num / candidate
 
             if num == 1:
                 break
         else:
             candidate = gen.__next__()
-
     return factors
 
 
+def problem007(num: int, gen: Generator[int, None, None]) -> int:
+    counter = 1
+    for prime in gen:
+        if counter == num:
+            return prime
+        counter += 1
 
 
-
-
-
-
-
+print(problem007(10001, prime_gen()))
