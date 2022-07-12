@@ -1,10 +1,18 @@
 """Project Euler problems"""
 from typing import List, Generator
-from helpers import *
+
+# from helpers import prime_gen
 
 
 def problem001(limit: int) -> int:
-    """ Solution to problem1"""
+    """ Solution to problem1
+    args:
+        - limit : the value until which we keep summing multiples of 3 and/or 5
+
+    returns:
+        - sum of all multiples of 3 and/or 5 below limit
+
+    """
 
     sum_vals = 0
     for val in range(limit):
@@ -14,7 +22,15 @@ def problem001(limit: int) -> int:
 
 
 def problem002(limit: int) -> int:
-    """ Solution to problem2"""
+    """ Solution to problem2
+
+    args:
+        - limit : the termination limit once a fib value reaches this value
+
+    returns:
+        - sum of all even fibs below limit
+
+    """
     sum_vals = 0
     fib1 = 0
     fib2 = 1
@@ -31,7 +47,16 @@ def problem002(limit: int) -> int:
 
 
 def problem003(num: int, gen: Generator[int, None, None]) -> List[int]:
-    """Solution to problem 3"""
+    """Solution to problem 3
+
+    args:
+        - num : the number to be factorised
+        - gen : a prime number generator (see prime_gen in file helpers.py)
+
+    returns:
+        - a list of prime factors of num
+
+    """
     factors = []
 
     # initialise candidate with first prime
@@ -49,12 +74,20 @@ def problem003(num: int, gen: Generator[int, None, None]) -> List[int]:
     return factors
 
 
-def problem007(num: int, gen: Generator[int, None, None]) -> int:
+def problem007(n: int, gen: Generator[int, None, None]) -> int:
+    """ Solution to problem 7
+
+    args:
+        - num : the " n'th " required prime number
+                (ex. n = 7 indicates a request for the 7th prime)
+        - gen : a prime number generator (see prime_gen in file helpers.py)
+
+    returns:
+        - a list of prime factors of num
+
+    """
     counter = 1
     for prime in gen:
-        if counter == num:
+        if counter == n:
             return prime
         counter += 1
-
-
-print(problem007(10001, prime_gen()))
