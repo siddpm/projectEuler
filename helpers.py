@@ -6,8 +6,6 @@ from typing import Generator
 
 def is_prime(n: int) -> bool:
 
-    # Error handling maybe for integers < 2
-
     # Edge case : 2 is prime by definition
     if n == 1:
         return False
