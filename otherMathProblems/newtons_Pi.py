@@ -55,11 +55,5 @@ def pi():
     return 3.141
 
 
-fourth_expansion = binomial_expansion(4)
-
-print(fourth_expansion)
-print()
-print(stringify_binom(fourth_expansion))
-
-print(alternate_binom_expansion(4))
-print(stringify_binom(alternate_binom_expansion(4)))
+exp_4 = alternate_binom_expansion(4)
+print(stringify_binom(exp_4))
