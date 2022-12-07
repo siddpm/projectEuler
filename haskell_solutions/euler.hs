@@ -60,7 +60,7 @@ isPrime a = not $ any (\y -> mod a y == 0) oddSqrtLst
 
 -- Create an infinite prime number generator
 primesGen :: [Int]
-primesGen = filter isPrime [1 ..]
+primesGen = filter isPrime (2 : [3, 5 ..])
 
 -- Problem 10 : summation of primes below 2000000
 problem003 :: (Num a, Ord a) => [a] -> a -> a
