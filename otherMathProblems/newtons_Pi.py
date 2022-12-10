@@ -51,9 +51,63 @@ def binom_coefficient(n, k):
     return math.factorial(n) / (math.factorial(k) * math.factorial(n - k))
 
 
-def pi():
-    return 3.141
+# I need a binomial expansion that expands to an infinite series
 
 
-exp_4 = alternate_binom_expansion(4)
-print(stringify_binom(exp_4))
+def binom_infinit(n, x_sign, x_power, stop_iter=10):
+    lst = [(1, 0), (x_sign * n, x_power)]
+
+    i = 2
+
+    while True:
+        coeff = n
+        for j in range(1, i):
+            coeff *= n - j
+        # coeff = int(coeff / math.factorial(i))
+        coeff = coeff / math.factorial(i)
+        if (i % 2) != 0:
+            coeff *= x_sign
+
+        x_val = i * x_power
+        print(coeff, x_val)
+        lst.append((coeff, x_val))
+        i += 1
+
+        if i == stop_iter:
+            break
+    return lst
+
+
+def integrate_expansion(lst_binom):
+    result_list = []
+    for coeff, power in lst_binom:
+        result_list.append((coeff / (power + 1), power + 1))
+    return result_list
+
+
+def pi_old(terms=10):
+    binom_series = binom_infinit(0.5, -1, 2, stop_iter=terms)
+    series = integrate_expansion(binom_series)
+    sum_val = 0
+    for coeff, _ in series:
+        sum_val += coeff
+    sum_val *= 4
+
+    return sum_val
+
+
+def pi_improved(terms=10):
+    binom_series = binom_infinit(0.5, -1, 2, stop_iter=terms)
+    series = integrate_expansion(binom_series)
+    sum_val = 0
+    for coeff, power in series:
+        sum_val += coeff * ((0.5) ** power)
+
+    sum_val = sum_val - (math.sqrt(3) / 8)
+    sum_val *= 12
+
+    return sum_val
+
+
+res = pi_improved(100)
+print(res)
