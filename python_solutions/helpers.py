@@ -13,6 +13,7 @@ def is_prime(n: int) -> bool:
         return True
 
     # Only need to check divisors until sqrt(n)
+    # A simple proof by contradiction suffices
     sqrt_n = math.isqrt(n)
 
     for i in range(2, sqrt_n + 1):
