@@ -29,3 +29,6 @@ def problem003(num: int, gen: Generator[int, None, None]) -> List[int]:
         else:
             candidate = gen.__next__()
     return factors
+
+if __name__ == "__main__":
+    print(problem003(600851475143, prime_gen()))

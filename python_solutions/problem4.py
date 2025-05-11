@@ -10,3 +10,5 @@ def problem004() -> int:
                     largest_val = val
 
     return largest_val
+
+print(problem004())

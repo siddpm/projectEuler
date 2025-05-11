@@ -20,3 +20,6 @@ def problem001(limit: int) -> int:
         if (val % 3 == 0) or (val % 5 == 0):
             sum_vals += val
     return sum_vals
+
+if __name__ == "__main__":
+    print(problem001(1000))

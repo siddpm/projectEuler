@@ -21,3 +21,6 @@ def problem002(limit: int) -> int:
             sum_vals += fib1
 
     return sum_vals
+
+if __name__ == "__main__":
+    print(problem002(4000000))
