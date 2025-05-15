@@ -35,3 +35,25 @@ def prime_gen() -> Generator[int, None, None]:
         if is_prime(candidate):
             yield candidate
         candidate += 1
+
+def gcd(a: int,b: int) -> int:
+    '''
+    Using Euclid's method of finding the greatest common divisor (GCD)
+    tweaked to use the modulo function instead of simple subtraction
+    '''
+    max_val = max(a,b)
+    min_val = min(a,b)
+
+    while True:
+        remainder = max_val % min_val
+
+        # Checks on the remainder
+        if remainder == 0:
+            return min_val
+        
+        # We need to continue with gcd, so update max and min respectively
+        max_val = min_val
+        min_val = remainder
+
+def lcm(a: int,b: int) -> int:
+    return a*b // gcd(a,b)
