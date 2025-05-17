@@ -21,3 +21,6 @@ def problem007(n: int, gen: Generator[int, None, None]) -> int:
         if counter == n:
             return prime
         counter += 1
+
+if __name__ == "__main__":
+    print(problem007(10001, prime_gen()))
