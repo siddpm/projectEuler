@@ -11,3 +11,6 @@ def problem010(limit: int, gen: Generator[int, None, None]) -> int:
             break
         sum_primes += prime
     return sum_primes
+
+if __name__ == "__main__":
+    print(problem010(2000000, prime_gen()))
