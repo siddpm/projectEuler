@@ -30,11 +30,15 @@ def prime_gen() -> Generator[int, None, None]:
 
     # Starting candidate by prime definiton
     candidate = 2
+    yield candidate
+
+    # We now only look at odd numbers as candidates for primality testing
+    candidate = 3
 
     while True:
         if is_prime(candidate):
             yield candidate
-        candidate += 1
+        candidate += 2
 
 def gcd(a: int,b: int) -> int:
     '''
