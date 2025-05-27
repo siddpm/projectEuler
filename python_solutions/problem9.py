@@ -20,11 +20,12 @@ def optimised_special_pythagorean_triplet():
             if a**2 + b**2 == c_squared:
                 return a*b*(1000-a-b)
 
-start = time()
-print(special_pythagorean_triplet())
 
-print(f"brute force took: {time() - start}")
+if __name__ == "__main__":
+    # start = time()
+    # print(special_pythagorean_triplet())
+    # print(f"brute force took: {time() - start}")
 
-start = time()
-print(optimised_special_pythagorean_triplet())
-print(f"Optimised took: {time() - start}")
+    start = time()
+    print(optimised_special_pythagorean_triplet())
+    print(f"Optimised took: {time() - start}")

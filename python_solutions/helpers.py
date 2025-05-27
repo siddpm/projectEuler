@@ -1,7 +1,7 @@
 """ Helper functions for solving Project Euler problems """
 
 import math
-from typing import Generator
+from typing import Generator, Dict
 
 
 def is_prime(n: int) -> bool:
@@ -61,3 +61,48 @@ def gcd(a: int,b: int) -> int:
 
 def lcm(a: int,b: int) -> int:
     return a*b // gcd(a,b)
+
+def prime_factors(n: int) -> Dict[int, int]:
+    '''
+    General idea is to go through each prime from 2
+    If 2 or next prime is a factor, we reduce the original number
+    to : n/ prime and we repeat the process. 
+    This way we get all the exponents of the prime factors as well
+
+    example, if we factor 28
+
+    28 % 2 == 0 -> 2 is a factor, number reduced to 28/2 = 14
+    14 % 2 == 0 -> 2 repeats again so we record an exponent of 2 and etc
+    '''
+
+    # store prime factors and their exponents
+    prime_factors = {}
+
+    gen = prime_gen()
+
+    candidate = gen.__next__()
+
+    while candidate <= n:
+
+        # If prime candidate is a factor of n
+        if n % candidate == 0:
+
+            # Save prime factor
+            # Check if prime factor already found previously
+            if candidate in prime_factors:
+                prime_factors[candidate] += 1
+            else:
+                prime_factors[candidate] = 1
+            
+            # reducing the original number . ex 28 / 2 = 14 and we continue with candidate 2
+            n = n//candidate
+
+            # exit condition
+            if n ==1:
+                break
+        else:
+            candidate = gen.__next__()
+    
+    return prime_factors
+
+

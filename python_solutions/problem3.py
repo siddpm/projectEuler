@@ -1,9 +1,9 @@
 from typing import List, Generator
 
-from helpers import prime_gen
+from helpers import prime_factors
 import time
 
-def problem003(num: int, gen: Generator[int, None, None]) -> List[int]:
+def problem003(num: int) -> List[int]:
     """Solution to problem 3
 
     args:
@@ -14,21 +14,9 @@ def problem003(num: int, gen: Generator[int, None, None]) -> List[int]:
         - a list of prime factors of num
 
     """
-    factors = []
+    prime_factors_dict = prime_factors(num)
 
-    # initialise candidate with first prime
-    candidate = gen.__next__()
-
-    while candidate <= num:
-        if num % candidate == 0:
-            factors.append(candidate)
-            num = num / candidate
-
-            if num == 1:
-                break
-        else:
-            candidate = gen.__next__()
-    return factors
+    return max(prime_factors_dict)
 
 if __name__ == "__main__":
-    print(problem003(600851475143, prime_gen()))
+    print(problem003(600851475143))
