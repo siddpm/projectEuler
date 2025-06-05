@@ -12,5 +12,12 @@ def power_digit_sum():
     
     return sum_val
 
+'''
+While trying to find a solution to this where
+I didnt have to compute each power of 2 until a 1000 (there isn't one)
+I came across the neat fact of n mod 9 = sum_digits(n) mod 9
+as 9 is the digital root of our base 10 numerical system.
+'''
+
 if __name__ == "__main__":
     print(power_digit_sum())
