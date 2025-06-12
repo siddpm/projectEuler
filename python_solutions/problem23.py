@@ -1,14 +1,17 @@
 '''
 Sketch of brute force solution:
     1. Generate all abundant numbers less than 28123
+        i. I am going to use the prime_factors function I previously wrote
+        ii. I will generate all (proper) divisors from the prime factors
+        iii. Then filter for abundant numbers using the sum of divisors
     2. Go through each number from 1 to 28123 and find 
-    if it can be expressed as a sum of two abundant numbers.
+        if it can be expressed as a sum of two abundant numbers.
     3. Sum all non-abundant numbers.
 '''
 from helpers import prime_factors
 from time import time
 
-def proper_divisors(prime_factors_dict):
+def proper_divisors_bruteforce(prime_factors_dict):
     '''
     In this function I want to be able to extract all divisors 
     from their prime factors (and their exponents)
@@ -32,14 +35,14 @@ def proper_divisors(prime_factors_dict):
     return divisor_set
                 
 
-def abundant_numbers(limit = 13):
+def abundant_numbers_bruteforce(limit = 13):
     abundant_numbers_lst = []
 
     for i in range(2,limit+1):
         prime_factors_dict = prime_factors(i)
 
         # get proper divisors
-        proper_divisors_set = proper_divisors(prime_factors_dict)
+        proper_divisors_set = proper_divisors_bruteforce(prime_factors_dict)
 
         if sum(proper_divisors_set) > i:
             abundant_numbers_lst.append(i)
@@ -47,8 +50,8 @@ def abundant_numbers(limit = 13):
     return abundant_numbers_lst
 
 
-def sum_non_abundant_numbers():
-    abundant_nums = abundant_numbers(28123)
+def sum_non_abundant_numbers_bruteforce():
+    abundant_nums = abundant_numbers_bruteforce(28123)
 
     sum_non_abundant_numbers_ = 0
 
@@ -65,16 +68,10 @@ def sum_non_abundant_numbers():
 
     return sum_non_abundant_numbers_
 
-
-
-
-# prime_factors_d = prime_factors(2)
-# print(proper_divisors(prime_factors_d))
-# print(len(abundant_numbers(28123)))
 if __name__ == "__main__":
     
     start = time()
-    print(sum_non_abundant_numbers())
+    print(sum_non_abundant_numbers_bruteforce())
     print("Total time:", time() - start)
 
 
