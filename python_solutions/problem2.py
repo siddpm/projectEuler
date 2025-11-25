@@ -1,5 +1,5 @@
 def problem002(limit: int) -> int:
-    """ Solution to problem2
+    """Solution to problem2
 
     args:
         - limit : the termination limit once a fib value reaches this value
@@ -21,6 +21,7 @@ def problem002(limit: int) -> int:
             sum_vals += fib1
 
     return sum_vals
+
 
 if __name__ == "__main__":
     print(problem002(4000000))

@@ -19,4 +19,3 @@ def fibonacci_1000_digit():
 
 if __name__ == "__main__":
     print("Fib count and actual fib numbers are: ", fibonacci_1000_digit())
-    print("not finished")
