@@ -11,4 +11,5 @@ def problem004() -> int:
 
     return largest_val
 
+
 print(problem004())
